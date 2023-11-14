@@ -10,8 +10,7 @@ import java.util.Set;
 
 public class Employee {
     private int id;
-    private String firstName;
-    private String lastName;
+    private String name;
     private Date birthday;
     private String department;
     private String email;
@@ -46,8 +45,7 @@ public class Employee {
         }
 
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name=firstName+' ' +lastName;
         this.birthday = birthday;
         this.department = department;
         this.email = email;

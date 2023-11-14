@@ -1,0 +1,7 @@
+.backgroundImage {
+    -fx-background-image: url('computer.jpg');
+    -fx-background-size: cover;
+}
+.label{
+    -fx-text-fill:white;
+}
