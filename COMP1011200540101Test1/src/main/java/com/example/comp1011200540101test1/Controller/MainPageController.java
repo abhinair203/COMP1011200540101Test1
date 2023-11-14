@@ -35,6 +35,14 @@ public class MainPageController {
     @FXML
     private void initialize(){
         updateTable(EmployeeDL.getLst());
+        setAvg();
+        setNum();
+    }
+    private void setNum(){
+        this.numOfEmployee.setText(String.valueOf(EmployeeDL.getTotalEmployee()));
+    }
+    private void setAvg(){
+        this.avgSalary.setText(String.valueOf(EmployeeDL.getAvgSalary()));
     }
     public void updateTable(ArrayList<Employee> employeeList) {
         ObservableList<Employee> observableEmployeeList = FXCollections.observableArrayList(employeeList);

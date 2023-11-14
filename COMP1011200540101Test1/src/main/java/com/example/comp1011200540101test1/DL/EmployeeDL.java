@@ -15,7 +15,7 @@ public class EmployeeDL {
         ArrayList<Employee> employeeList = new ArrayList<>();
 
         try (Connection connection = DBHandler.getDBConnection()) {
-            String query = "SELECT ID, firstName, lastName, salary, email, birthday, department FROM employees";
+            String query = "SELECT ID, firstName, lastName, salary, email, birthday, department FROM employees ";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query);
                  ResultSet resultSet = preparedStatement.executeQuery()) {
 
@@ -36,5 +36,39 @@ public class EmployeeDL {
             throw new RuntimeException(e);
         }
         return employeeList;
+    }
+    public static float getAvgSalary(){
+
+        try (Connection connection = DBHandler.getDBConnection()) {
+            String query = "Select avg(salary) average from employees";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    float average = resultSet.getFloat("average");
+                    return average;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+
+    public static int getTotalEmployee() {
+        try (Connection connection = DBHandler.getDBConnection()) {
+            String query = "Select count(salary) average from employees";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query);
+                 ResultSet resultSet = preparedStatement.executeQuery()) {
+
+                while (resultSet.next()) {
+                    int num = resultSet.getInt("average");
+                    return num ;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
     }
 }

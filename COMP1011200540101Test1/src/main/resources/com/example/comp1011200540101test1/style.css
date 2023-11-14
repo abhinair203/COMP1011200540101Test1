@@ -1,5 +1,5 @@
 .backgroundImage {
-    -fx-background-image: url('computer.jpg');
+    -fx-background-image: url('computer.png');
     -fx-background-size: cover;
 }
 .label{
