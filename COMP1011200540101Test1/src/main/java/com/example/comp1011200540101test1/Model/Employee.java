@@ -1,5 +1,9 @@
 package com.example.comp1011200540101test1.Model;
 
+import javafx.beans.binding.BooleanExpression;
+import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
+
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -11,12 +15,12 @@ import java.util.Set;
 public class Employee {
     private int id;
     private String name;
-    private Date birthday;
+    private final Date birthday;
     private String department;
     private String email;
-    private int salary;
+    private double salary;
 
-    public Employee(int id, String firstName, String lastName, Date birthday, String department, String email, int salary) {
+    public Employee(int id, String firstName, String lastName, Date birthday, String department, String email, double salary) {
         if (!(id > 0)) {
             throw new IllegalArgumentException("Id should be greater than zero");
         }
@@ -55,4 +59,51 @@ public class Employee {
     public int getAge() {
         return Period.between(this.birthday.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now()).getYears();
     }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+    public Date getBirthday(){ return birthday;}
+    public String getFirstName() {
+        return name.split(" ")[0];
+    }
+    public String getLastName(){
+            return name.split(" ")[1];
+    }
+    public int getId() {
+        return id;
+    }
+    public IntegerProperty iDProperty() {
+        return new SimpleIntegerProperty( id);
+    }
+
+    public StringProperty firstNameProperty() {
+        return new SimpleStringProperty(name.split(" ")[0]);
+    }
+
+        public StringProperty departmentProperty() {
+        return new SimpleStringProperty(department);
+    }
+
+    public StringProperty emailProperty() {
+        return new SimpleStringProperty(email);
+    }
+
+    public DoubleProperty salaryProperty() {
+        return new SimpleDoubleProperty(salary);
+    }
+
+
+    public StringProperty lastNameProperty() {
+        return new SimpleStringProperty(name.split(" ")[1]);
+    }
+
 }
