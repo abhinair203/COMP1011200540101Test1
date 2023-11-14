@@ -34,7 +34,7 @@ public class MainPageController {
 
     @FXML
     private void initialize(){
-
+        updateTable(EmployeeDL.getLst());
     }
     public void updateTable(ArrayList<Employee> employeeList) {
         ObservableList<Employee> observableEmployeeList = FXCollections.observableArrayList(employeeList);
